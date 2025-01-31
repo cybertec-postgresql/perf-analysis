@@ -29,7 +29,7 @@ perf record -p $walreceiver -e 'syscalls:sys_*' \
 Another example for capturing all writes, fsyncs and block device queue, issue and completion events:
 
 ```shell
-perf record  -e 'block:block_rq_insert,block:block_rq_issue,block:block_rq_complete,syscalls:sys_*_fdatasync,syscalls:sys_*_pwrite64' \
+perf record -a -e 'block:block_rq_insert,block:block_rq_issue,block:block_rq_complete,syscalls:sys_*_fdatasync,syscalls:sys_*_pwrite64' \
    -o ioevents-$(date "+%Y.%m.%d-%H.%M.%S").perf \
   -- sleep 60
 ```
